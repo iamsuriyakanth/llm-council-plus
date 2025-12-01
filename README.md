@@ -8,7 +8,7 @@ Inspired by [Karpathy's LLM Council](https://github.com/karpathy), this system u
 
 ## Features
 
-- **Multi-Model Evaluation**: 3+ diverse models from different providers
+- **Multi-Model Evaluation**: Multiple diverse models from different providers
 - **Anonymous Peer Review**: Models don't know which response is theirs
 - **4-Criteria Scoring** (0-10 scale):
   -  **Toxicity**: Harmful or unsafe content
