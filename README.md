@@ -25,7 +25,7 @@ Inspired by [Karpathy's LLM Council](https://github.com/karpathy), this system u
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for technical details.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Backend**: Python, FastAPI, HTTPX
 - **Frontend**: React, Vite
