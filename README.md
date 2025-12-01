@@ -1,87 +1,82 @@
-# LLM Council
+# Open Cross-Evaluation for Language Models 🔍
 
-![llmcouncil](header.jpg)
+Anonymous peer scoring across LLMs for toxicity, bias, hallucinations, and political tilt.
 
-The idea of this repo is that instead of asking a question to your favorite LLM provider (e.g. OpenAI GPT 5.1, Google Gemini 3.0 Pro, Anthropic Claude Sonnet 4.5, xAI Grok 4, eg.c), you can group them into your "LLM Council". This repo is a simple, local web app that essentially looks like ChatGPT except it uses OpenRouter to send your query to multiple LLMs, it then asks them to review and rank each other's work, and finally a Chairman LLM produces the final response.
+## 🌟 Concept
 
-In a bit more detail, here is what happens when you submit a query:
+Inspired by [Karpathy's LLM Council](https://github.com/karpathy), this system uses **peer review** instead of a single judge model. Multiple AI models evaluate each other anonymously, producing democratic, transparent scores.
 
-1. **Stage 1: First opinions**. The user query is given to all LLMs individually, and the responses are collected. The individual responses are shown in a "tab view", so that the user can inspect them all one by one.
-2. **Stage 2: Review**. Each individual LLM is given the responses of the other LLMs. Under the hood, the LLM identities are anonymized so that the LLM can't play favorites when judging their outputs. The LLM is asked to rank them in accuracy and insight.
-3. **Stage 3: Final response**. The designated Chairman of the LLM Council takes all of the model's responses and compiles them into a single final answer that is presented to the user.
+## ✨ Features
 
-## Vibe Code Alert
+- **Multi-Model Evaluation**: 3+ diverse models from different providers
+- **Anonymous Peer Review**: Models don't know which response is theirs
+- **4-Criteria Scoring** (0-10 scale):
+  - 🟢 **Toxicity**: Harmful or unsafe content
+  - ⚖️ **Bias**: Neutral vs. biased viewpoint
+  - 🤥 **Hallucination**: Factual accuracy
+  - 🏛️ **Political Tilt**: Neutral vs. extreme leaning
+- **Transparent Scoreboard**: All evaluations visible with reasoning
 
-This project was 99% vibe coded as a fun Saturday hack because I wanted to explore and evaluate a number of LLMs side by side in the process of [reading books together with LLMs](https://x.com/karpathy/status/1990577951671509438). It's nice and useful to see multiple responses side by side, and also the cross-opinions of all LLMs on each other's outputs. I'm not going to support it in any way, it's provided here as is for other people's inspiration and I don't intend to improve it. Code is ephemeral now and libraries are over, ask your LLM to change it in whatever way you like.
+## 🏗️ How It Works
 
-## Setup
+1. **Stage 1**: All models answer your question independently
+2. **Stage 2**: Each model scores the others (anonymized as Response A, B, C...)
+3. **Stage 3**: Scores are averaged and ranked
 
-### 1. Install Dependencies
+See [ARCHITECTURE.md](ARCHITECTURE.md) for technical details.
 
-The project uses [uv](https://docs.astral.sh/uv/) for project management.
+## 🛠️ Tech Stack
 
-**Backend:**
+- **Backend**: Python, FastAPI, HTTPX
+- **Frontend**: React, Vite
+- **AI Provider**: [OpenRouter](https://openrouter.ai) (unified API for all models)
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+- OpenRouter API Key
+
+### Setup
+
 ```bash
-uv sync
-```
+# Clone
+git clone https://github.com/yourusername/llm-council-plus.git
+cd llm-council-plus
 
-**Frontend:**
-```bash
-cd frontend
+# Backend
+cd backend
+echo "OPENROUTER_API_KEY=your_key_here" > .env
+pip install -r requirements.txt
+
+# Frontend
+cd ../frontend
 npm install
+
+# Run
 cd ..
-```
-
-### 2. Configure API Key
-
-Create a `.env` file in the project root:
-
-```bash
-OPENROUTER_API_KEY=sk-or-v1-...
-```
-
-Get your API key at [openrouter.ai](https://openrouter.ai/). Make sure to purchase the credits you need, or sign up for automatic top up.
-
-### 3. Configure Models (Optional)
-
-Edit `backend/config.py` to customize the council:
-
-```python
-COUNCIL_MODELS = [
-    "openai/gpt-5.1",
-    "google/gemini-3-pro-preview",
-    "anthropic/claude-sonnet-4.5",
-    "x-ai/grok-4",
-]
-
-CHAIRMAN_MODEL = "google/gemini-3-pro-preview"
-```
-
-## Running the Application
-
-**Option 1: Use the start script**
-```bash
 ./start.sh
 ```
 
-**Option 2: Run manually**
+Access at `http://localhost:5173`
 
-Terminal 1 (Backend):
-```bash
-uv run python -m backend.main
+## ⚙️ Configuration
+
+Edit `backend/config.py` to change models:
+
+```python
+COUNCIL_MODELS = [
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "x-ai/grok-4.1-fast:free",
+    "openai/gpt-oss-20b:free",
+]
 ```
 
-Terminal 2 (Frontend):
-```bash
-cd frontend
-npm run dev
-```
+## 🤝 Contributing
 
-Then open http://localhost:5173 in your browser.
+Pull requests welcome!
 
-## Tech Stack
+## 📄 License
 
-- **Backend:** FastAPI (Python 3.10+), async httpx, OpenRouter API
-- **Frontend:** React + Vite, react-markdown for rendering
-- **Storage:** JSON files in `data/conversations/`
-- **Package Management:** uv for Python, npm for JavaScript
+MIT
