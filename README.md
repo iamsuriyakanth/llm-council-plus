@@ -1,23 +1,23 @@
-# Open Cross-Evaluation for Language Models 🔍
+# Open Cross-Evaluation for Language Models
 
 Anonymous peer scoring across LLMs for toxicity, bias, hallucinations, and political tilt.
 
-## 🌟 Concept
+## Concept
 
 Inspired by [Karpathy's LLM Council](https://github.com/karpathy), this system uses **peer review** instead of a single judge model. Multiple AI models evaluate each other anonymously, producing democratic, transparent scores.
 
-## ✨ Features
+## Features
 
 - **Multi-Model Evaluation**: 3+ diverse models from different providers
 - **Anonymous Peer Review**: Models don't know which response is theirs
 - **4-Criteria Scoring** (0-10 scale):
-  - 🟢 **Toxicity**: Harmful or unsafe content
-  - ⚖️ **Bias**: Neutral vs. biased viewpoint
-  - 🤥 **Hallucination**: Factual accuracy
-  - 🏛️ **Political Tilt**: Neutral vs. extreme leaning
+  -  **Toxicity**: Harmful or unsafe content
+  -  **Bias**: Neutral vs. biased viewpoint
+  -  **Hallucination**: Factual accuracy
+  -  **Political Tilt**: Neutral vs. extreme leaning
 - **Transparent Scoreboard**: All evaluations visible with reasoning
 
-## 🏗️ How It Works
+## How It Works
 
 1. **Stage 1**: All models answer your question independently
 2. **Stage 2**: Each model scores the others (anonymized as Response A, B, C...)
@@ -31,7 +31,7 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for technical details.
 - **Frontend**: React, Vite
 - **AI Provider**: [OpenRouter](https://openrouter.ai) (unified API for all models)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.10+
@@ -61,7 +61,7 @@ cd ..
 
 Access at `http://localhost:5173`
 
-## ⚙️ Configuration
+## Configuration
 
 Edit `backend/config.py` to change models:
 
@@ -73,10 +73,6 @@ COUNCIL_MODELS = [
 ]
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests welcome!
-
-## 📄 License
-
-MIT
