@@ -2,6 +2,8 @@
 
 Anonymous peer scoring across LLMs for toxicity, bias, hallucinations, and political tilt.
 
+<img width="1440" height="854" alt="Screenshot 2025-12-01 at 3 58 56 PM" src="https://github.com/user-attachments/assets/4b43d173-ff5b-4afa-8488-beea62259cfd" />
+
 ## Concept
 
 Inspired by [Karpathy's LLM Council](https://github.com/karpathy), this system uses **peer review** instead of a single judge model. Multiple AI models evaluate each other anonymously, producing democratic, transparent scores.
